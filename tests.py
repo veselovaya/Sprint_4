@@ -113,6 +113,13 @@ class TestBooksCollector:
         collector.set_book_genre('Pakun', 'Комедии')
         assert 'Pakun' in collector.get_books_with_specific_genre('Комедии')
 
+    # проверяем, что в список для детей входят книги с подходящим жанром
+    def test_get_books_for_children_books_in_list_true(self):
+        collector = BooksCollector()
+        collector.add_new_book('Первому игроку приготовиться')
+        collector.set_book_genre('Первому игроку приготовиться', 'Фантастика')
+        assert len(collector.get_books_for_children()) == 1
+
     # проверяем, что в список для детей не входят Ужасы и Детективы
     @pytest.mark.parametrize(
         'name, genre',
