@@ -104,6 +104,13 @@ class TestBooksCollector:
         collector.add_new_book('Avatar')
         assert collector.get_books_genre()['Avatar'] == ''
 
+    # проверяем, что можем получить жанр книги по названию
+    def test_get_book_genre_one_book_true(self):
+        collector = BooksCollector()
+        collector.add_new_book('Avatar')
+        collector.set_book_genre('Avatar', 'Фантастика')
+        assert collector.get_book_genre('Avatar') == 'Фантастика'
+
     # проверяем, что выводятся книги с определеным жанром
     def test_get_books_with_specific_genre_true(self):
         collector = BooksCollector()
